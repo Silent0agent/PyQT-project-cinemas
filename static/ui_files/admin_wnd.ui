@@ -266,7 +266,7 @@
            <item>
             <widget class="QPushButton" name="add_poster_btn">
              <property name="text">
-              <string>Добавить афишу к фильму</string>
+              <string>Добавить афишу к фильму (jpg)</string>
              </property>
             </widget>
            </item>

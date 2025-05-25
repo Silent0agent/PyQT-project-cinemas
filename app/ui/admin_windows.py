@@ -8,6 +8,7 @@ from app.ui.widgets import ShowCinemas, ShowHalls, ShowSessions, ShowFilms, Date
 from app.utils.helpers import save_poster
 from config.paths import paths
 
+
 class AdminWindow(QMainWindow):
     switch_window = pyqtSignal()
 
@@ -113,6 +114,9 @@ class AdminWindow(QMainWindow):
 
     def add_poster(self):
         fname = QFileDialog.getOpenFileName(self, 'Выбрать картинку', '')[0]
+        if fname.split('.')[-1] not in ['jpg', 'jpeg', 'jpe', 'jfif']:
+            self.statusBar().showMessage('Формат постера должен быть в формате jpeg (jpg)')
+            return
         self.enter_poster_for_film.setText(fname)
 
     def add_film(self):
@@ -134,6 +138,7 @@ class AdminWindow(QMainWindow):
                 raise Exception
         except Exception:
             self.statusBar().showMessage(f"Данные о фильме введены некорректно")
+
     def add_time_start(self):
         self.widg = DateChoose()
         self.widg.show()
